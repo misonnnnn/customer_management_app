@@ -1,44 +1,38 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-8 mx-auto bg-light p-3 shadow-sm rounded-3">
+  <div >
     <p style="color: green"><%= notice %></p>
-
     <div class="mb-3">
         <h6 class="my-2 text-center">CUSTOMER DETAILS</h6>
-      </div>
-      <%= render @customer %>
-
-      <div class="d-flex justify-content-between align-items-center mt-3">
-        <div>
-          <%= link_to "Back to customers", customers_path, class: "btn btn-sm btn-secondary me-3" %>
-        </div>
-
-        <div class="d-flex justify-content-end align-items-center">
-          <div class="me-3">
-            <%= form_with url: toggle_status_customer_path(@customer), method: :patch, local: true do %>
-              <div class="form-check form-switch" >
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name="status_toggle"
-                  id="flexSwitchCheckChecked"
-                  <%= 'checked' if @customer.active? %>
-                  onchange="if(confirm('Are you sure you want to toggle this customer\'s status?')) { this.form.submit(); } else { this.checked = !this.checked; }"
-                />
-                <label class="form-check-label" for="flexSwitchCheckChecked">Status: 
-                <%= (@customer.active? ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-danger">Inactive</span>').html_safe %>
-                </label>
-              </div>
-            <% end %>
-          </div>
-
-          <%= link_to "Edit", edit_customer_path(@customer), class: "btn btn-sm btn-primary me-3" %> 
-
-          <%= button_to "Delete", @customer, method: :delete, class: "btn btn-sm btn-danger", onclick: "return confirm('Are you sure you want to delete this customer?');" %>
-        </div>
-        
+    </div>
+    <%= render @customer %>
+    <div class="d-flex justify-content-between align-items-center mt-3">
+      <div>
+        <%= link_to "Back to customers", customers_path, class: "btn btn-sm btn-secondary me-3" %>
       </div>
 
+      <div class="d-flex justify-content-end align-items-center">
+        <div class="me-3">
+          <%= form_with url: toggle_status_customer_path(@customer), method: :patch, local: true do %>
+            <div class="form-check form-switch" >
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="status_toggle"
+                id="flexSwitchCheckChecked"
+                <%= 'checked' if @customer.active? %>
+                onchange="if(confirm('Are you sure you want to toggle this customer\'s status?')) { this.form.submit(); } else { this.checked = !this.checked; }"
+              />
+              <label class="form-check-label" for="flexSwitchCheckChecked">Status: 
+              <%= (@customer.active? ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-danger">Inactive</span>').html_safe %>
+              </label>
+            </div>
+          <% end %>
+        </div>
+
+        <%= link_to "Edit", edit_customer_path(@customer), class: "btn btn-sm btn-primary me-3" %> 
+
+        <%= button_to "Delete", @customer, method: :delete, class: "btn btn-sm btn-danger", onclick: "return confirm('Are you sure you want to delete this customer?');" %>
+      </div>
     </div>
   </div>
 
