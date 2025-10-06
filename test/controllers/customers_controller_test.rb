@@ -47,7 +47,7 @@ class CustomersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to customer_url(@customer)
   end
 
-  test "should destroy customer" do
+  test "should delete customer" do
     assert_difference("Customer.count", -1) do
       delete customer_url(@customer)
     end
