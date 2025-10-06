@@ -1,6 +1,15 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: %i[ show edit update destroy ]
 
+  def toggle_status
+    @customer = Customer.find(params[:id])
+    @customer.active? ? @customer.update(status: "inactive") : @customer.update(status: "active")
+    respond_to do |format|
+      format.html { redirect_to @customer, notice: "Status updated to #{@customer.status}." }
+      format.json { head :no_content }
+    end
+  end
+
   # GET /customers or /customers.json
   def index
     @customers = Customer.all
