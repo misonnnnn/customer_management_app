@@ -1,24 +1,65 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple Ruby on Rails application providing full CRUD functionality for managing customers.
 
-Things you may want to cover:
+Setup:
 
-* Ruby version
+1. Clone the repository
+```bash
+   git clone https://github.com/misonnnnn/customer_management_app.git
+   cd customer_management_app` 
+```
 
-* System dependencies
+2. Install dependencies
+```bash
+    bundle install
+```
 
-* Configuration
+3. Set up the database
 
-* Database creation
+You may update your database configuration in `config/database.yml` if needed, for example:
+config/database.yml
+```yml
+    username: root
+    password: root
 
-* Database initialization
+```
+Then run the following commands to create and migrate the database:
+```bash
+    rails db:create db:migrate
+```
 
-* How to run the test suite
+4. Run the server
+```bash
+    rails server
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Access it at http://localhost:3000
 
-* Deployment instructions
+---
+Running Automated Tests:
 
-* ...
+To execute model and controller tests:
+```bash
+    rails test
+```
+
+To execute system (browser) tests:
+```bash
+    rails test:system
+```
+---
+Features:
+- CRUD for customers
+- Validations for required fields and format
+- Status toggle with visual badges
+- Bootstrap UI
+- Custom 404 error page
+- DataTables support
+
+Tech Stack:
+- Ruby on Rails (8.0.3)
+- Bootstrap 5
+- MySQL
+
+
