@@ -20,4 +20,5 @@ Rails.application.routes.draw do
 
   match "/404", to: "errors#not_found", via: :all
   match "*path", to: "errors#not_found", via: :all
+  root "customers#index"
 end
