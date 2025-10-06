@@ -10,8 +10,15 @@
   
   <div>
     <%= form_with url: toggle_status_customer_path(@customer), method: :patch, local: true do %>
-      <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" name="status_toggle" onchange="this.form.submit()" id="flexSwitchCheckChecked" <%= 'checked' if @customer.active? %>>
+      <div class="form-check form-switch" >
+        <input
+          class="form-check-input"
+          type="checkbox"
+          name="status_toggle"
+          id="flexSwitchCheckChecked"
+          <%= 'checked' if @customer.active? %>
+          onchange="if(confirm('Are you sure you want to toggle this customer\'s status?')) { this.form.submit(); } else { this.checked = !this.checked; }"
+        />
         <label class="form-check-label" for="flexSwitchCheckChecked">Status: <strong><%= @customer.status.capitalize %></strong></label>
       </div>
     <% end %>

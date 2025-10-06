@@ -17,4 +17,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  match "/404", to: "errors#not_found", via: :all
+  match "*path", to: "errors#not_found", via: :all
 end

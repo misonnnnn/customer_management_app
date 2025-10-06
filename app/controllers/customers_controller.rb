@@ -1,5 +1,7 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: %i[ show edit update destroy ]
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
+  rescue_from ActionController::RoutingError, with: :render_not_found
 
   def toggle_status
     @customer = Customer.find(params[:id])
@@ -17,6 +19,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/1 or /customers/1.json
   def show
+    @customer = Customer.find(params[:id])
   end
 
   # GET /customers/new
@@ -64,6 +67,15 @@ class CustomersController < ApplicationController
       format.html { redirect_to customers_path, notice: "Customer was successfully destroyed.", status: :see_other }
       format.json { head :no_content }
     end
+  end
+
+  def record_not_found
+    flash[:alert] = "Customer not found."
+    redirect_to customers_path
+  end
+
+  def render_not_found
+    render template: "errors/not_found", status: :not_found
   end
 
   private
