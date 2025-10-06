@@ -1,22 +1,45 @@
 <div id="<%= dom_id customer %>">
-  <p>
-    <strong>First name:</strong>
-    <%= customer.first_name %>
-  </p>
 
-  <p>
-    <strong>Last name:</strong>
-    <%= customer.last_name %>
-  </p>
+  <div class="mb-3">
+    <h6 class="my-2 text-center">CUSTOMER DETAILS</h6>
+  </div>
 
-  <p>
-    <strong>Phone number:</strong>
-    <%= customer.phone_number %>
-  </p>
+  <div class="row mb-0">
+    <div class="col-md-12">
+      <small class="m-0 text-muted">Customer Name:</small>
+      <h2 class=" text-capitalize"><%= customer.full_name %></h2>
+    </div>
+  </div>
 
-  <p>
-    <strong>Email:</strong>
-    <%= customer.email %>
-  </p>
+  <!-- <div class="row mb-0">
+    <div class="col-md-6">
+      <small class="m-0 text-muted">Last name:</small>
+      <p class="text-capitalize fw-bold"><%= customer.first_name %></p>
+    </div>
+    <div class="col-md-6">
+      <small class="m-0 text-muted">Last name:</small>
+      <p class="text-capitalize fw-bold"><%= customer.last_name %></p>
+    </div>
+  </div> --> 
+
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <small class="m-0 text-muted">Phone number:</small>
+      <p class="p-0 m-0 text-capitalize fw-bold"><%= customer.phone_number %></p> 
+    </div>
+    <div class="col-md-6">
+      <small class="m-0 text-muted">Email:</small>
+      <p class="p-0 m-0 text-capitalize fw-bold"><%= customer.email %></p>
+    </div>
+  </div>
+
+  <div class="row mb-0">
+    <div class="col-md-6">
+      <small class="m-0 text-muted">Date added:</small>
+      <p class="p-0 m-0 text-capitalize fw-bold"><%= customer.created_at.strftime("%B %d, %Y") %></p> 
+    </div>
+  </div>
+
+  <hr>
 
 </div>
