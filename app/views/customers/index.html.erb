@@ -1,16 +1,32 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Customers" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mx-auto bg-light p-3 shadow-sm rounded-3">
+      <p style="color: green"><%= notice %></p>
+      <div class="mb-3">
+        <h6 class="my-2 text-center">CUSTOMERS</h6>
+      </div>
 
-<h1>Customers</h1>
+      <div id="customers">
+        <% if @customers.any? %>
+          <% @customers.each do |customer| %>
+            <%= render customer %>
+            <p>
+              <%= link_to "Show this customer", customer, class: "btn btn-sm btn-outline-primary" %>
+            </p>
+          <% end %>
+        <% else %>
+          <div class="alert alert-default mt-3" role="alert">
+            No customers have been added yet.
+          </div>
+        <% end %>
+      </div>
 
-<div id="customers">
-  <% @customers.each do |customer| %>
-    <%= render customer %>
-    <p>
-      <%= link_to "Show this customer", customer %>
-    </p>
-  <% end %>
+      <%= link_to "New Customer", new_customer_path, class: "btn btn-sm btn-primary mt-3" %>
+    </div>
+  </div>
 </div>
 
-<%= link_to "New customer", new_customer_path %>
+
+
+
