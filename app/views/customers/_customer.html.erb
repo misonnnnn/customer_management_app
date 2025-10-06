@@ -4,18 +4,12 @@
       <small class="m-0 text-muted">Customer Name:</small>
       <h2 class=" text-capitalize"><%= customer.full_name %></h2>
     </div>
-  </div>
 
-  <!-- <div class="row mb-0">
-    <div class="col-md-6">
-      <small class="m-0 text-muted">Last name:</small>
-      <p class="text-capitalize fw-bold"><%= customer.first_name %></p>
+    <div class="col-md-12 mb-3">
+      <small class="m-0 text-muted">Status:</small>
+      <%= (customer.active? ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-danger">Inactive</span>').html_safe %>
     </div>
-    <div class="col-md-6">
-      <small class="m-0 text-muted">Last name:</small>
-      <p class="text-capitalize fw-bold"><%= customer.last_name %></p>
-    </div>
-  </div> --> 
+  </div>
 
   <div class="row mb-2">
     <div class="col-md-6">
@@ -30,11 +24,14 @@
 
   <div class="row mb-0">
     <div class="col-md-6">
+      <small class="m-0 text-muted">Date of birth:</small>
+      <p class="p-0 m-0 text-capitalize fw-bold"><%= customer.date_of_birth.strftime("%B %d, %Y") %></p> 
+    </div>
+    <div class="col-md-6">
       <small class="m-0 text-muted">Date added:</small>
       <p class="p-0 m-0 text-capitalize fw-bold"><%= customer.created_at.strftime("%B %d, %Y") %></p> 
     </div>
   </div>
 
   <hr>
-
 </div>

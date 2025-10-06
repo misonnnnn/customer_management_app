@@ -6,6 +6,10 @@ class Customer < ApplicationRecord
     validates :phone_number, format: { with: /\A\d+\z/, message: "only allows numbers" }
     validates :phone_number, :email, uniqueness: true
     validate :date_of_birth_cannot_be_in_the_future
+    validates :email, presence: true, format: { 
+        with: /\A[^@\s]+@[^@\s]+\z/, 
+        message: "must be a valid email address" 
+    }
 
     def full_name
         "#{first_name} #{last_name}"
