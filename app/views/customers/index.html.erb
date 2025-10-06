@@ -6,24 +6,45 @@
     </div>
 
     <div id="customers">
-      <% if @customers.any? %>
-        <% @customers.each do |customer| %>
-          <%= render customer %>
-          <p>
-            <%= link_to "Show this customer", customer, class: "btn btn-sm btn-outline-primary" %>
-          </p>
-        <% end %>
-      <% else %>
-        <div class="alert alert-default mt-3" role="alert">
-          No customers have been added yet.
-        </div>
-      <% end %>
+      <div>
+        <table id="customersTable" class="table table-striped">
+          <thead>
+            <tr>
+              <th>Full Name</th>
+              <th>Phone Number</th>
+              <th>Status</th>
+              <th>Date of Birth</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @customers.each do |customer| %>
+              <tr>
+                <td class="text-capitalize"><%= customer.full_name %></td>
+                <td><%= customer.phone_number %></td>
+                <td><%= (customer.active? ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-danger">Inactive</span>').html_safe %></td>
+                <td><%= customer.date_of_birth.strftime("%B %d, %Y") %></td>
+                <td>
+                  <%= link_to "Show", customer, class: "btn btn-sm btn-primary" %>
+                  <%= link_to "Edit", edit_customer_path(customer), class: "btn btn-sm btn-secondary" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>      
+      </div>
+
     </div>
 
     <!-- <%= link_to "New Customer", new_customer_path, class: "btn btn-sm btn-primary mt-3" %> -->
   </div>
 </div>
 
+<script>
+  $(document).ready(function() {
+    $('#customersTable').DataTable();
+  });
+</script>
 
 
 
