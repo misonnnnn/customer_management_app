@@ -23,7 +23,7 @@
                 <td class="text-capitalize"><%= customer.full_name %></td>
                 <td><%= customer.phone_number %></td>
                 <td><%= (customer.active? ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-danger">Inactive</span>').html_safe %></td>
-                <td><%= customer.date_of_birth.strftime("%B %d, %Y") %></td>
+                <td><%= customer.date_of_birth.present? ? customer.date_of_birth.strftime("%B %d, %Y") : "N/A" %></td>
                 <td>
                   <%= link_to "Show", customer, class: "btn btn-sm btn-primary" %>
                   <%= link_to "Edit", edit_customer_path(customer), class: "btn btn-sm btn-secondary" %>

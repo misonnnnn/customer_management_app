@@ -1,7 +1,7 @@
 class Customer < ApplicationRecord
     enum :status, { active: "active", inactive: "inactive" }, default: "active"
 
-    validates :first_name, :last_name, :phone_number, :date_of_birth, presence: true
+    validates :first_name, :last_name, :phone_number, :status, :date_of_birth, presence: true
     validates :first_name, :last_name, length: { maximum: 50 }
     validates :phone_number, format: { with: /\A\d+\z/, message: "only allows numbers" }
     validates :phone_number, :email, uniqueness: true
